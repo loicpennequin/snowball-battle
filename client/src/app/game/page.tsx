@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { UnplugIcon } from "lucide-react";
 import Link from "next/link";
 import { SantaColor } from "@/lib/player-options";
+import { PixiRenderer } from "./PixiRenderer";
 
 export type Score = {
   kills: number;
@@ -58,8 +59,8 @@ export default function Game() {
           ...prev,
           {
             id: Math.random().toString(16).slice(2),
-            victim: victim,
-            killer: killer,
+            victim,
+            killer,
           },
         ]);
         setTimeout(() => {
@@ -75,10 +76,11 @@ export default function Game() {
         cleanup();
       });
     };
-  }, [params]);
+  }, [params, router]);
 
   return (
     <main className="relative">
+      <PixiRenderer />
       <canvas id="canvas" className="cursor-none"></canvas>
       <div className="absolute top-4 right-4 select-none">
         <ScoreBoard scores={scores} myPlayerId={playerIdRef.current} />

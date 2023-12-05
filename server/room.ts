@@ -18,7 +18,7 @@ export async function createRoom(
   console.log(`Creating rooms with id of ${roomId}`);
 
   const THROW_DELAY = 500;
-  const GAME_LENGTH = 3 * 60 * 1000;
+  const GAME_LENGTH = 30 * 60 * 1000;
   let timeLeft = GAME_LENGTH;
 
   const TICK_RATE = 20;
