@@ -50,17 +50,24 @@ type Tile = {
 };
 
 export class MapManager {
-  public ground: Tile[][];
-  public decals: (Tile | undefined)[][];
-
-  constructor(ground: Tile[][], decals: (Tile | undefined)[][]) {
+  constructor(
+    public width: number,
+    public height: number,
+    public ground: Tile[][],
+    public decals: (Tile | undefined)[][]
+  ) {
     this.ground = ground;
     this.decals = decals;
   }
 
   static async create() {
     const mapData = await loadMap();
-    const mapManager = new MapManager(mapData.ground2D, mapData.decal2D);
+    const mapManager = new MapManager(
+      mapData.width,
+      mapData.height,
+      mapData.ground2D,
+      mapData.decal2D
+    );
     return mapManager;
   }
 

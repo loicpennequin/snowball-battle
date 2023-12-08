@@ -191,6 +191,8 @@ export async function createRoom(
     broadcast("remaining", timeLeft);
 
     socket.emit("map", {
+      width: mapManager.width,
+      height: mapManager.height,
       ground: mapManager.ground,
       decal: mapManager.decals,
     });

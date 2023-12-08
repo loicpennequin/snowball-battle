@@ -2,7 +2,7 @@ import tmx from "tmx-parser";
 import path from "path";
 
 export async function loadMap() {
-  const map = await new Promise((resolve, reject) => {
+  const map: any = await new Promise((resolve, reject) => {
     tmx.parseFile(path.join(__dirname, "map.tmx"), function (err, loadedMap) {
       if (err) return reject(err);
       resolve(loadedMap);
@@ -35,6 +35,8 @@ export async function loadMap() {
   }
 
   return {
+    height: map.height,
+    width: map.width,
     ground2D,
     decal2D,
   };
